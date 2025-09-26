@@ -1,117 +1,104 @@
-# 📊 Sales Price Prediction & Analysis
+# 📊 Customer Segmentation Using Kmeans
 
-This project predicts **product sales based on advertising budgets** (TV, Radio, Newspaper) using machine learning models.  
-It also provides **feature importance analysis**, **what-if budget scenarios**, and an **interactive prediction tool**.
-
----
-
-## 🚀 Features
-
-- **Baseline Model** – Simple mean-based predictor  
-- **ML Models** – Linear Regression, Ridge Regression, Support Vector Machine (SVM)  
-- **Evaluation** – Metrics (MAE, RMSE, R²) + Actual vs Predicted plots  
-- **Feature Importance** – Using permutation importance  
-- **Scenario Analysis** – Simulate budget changes (e.g., +10% TV, -20% Newspaper)  
-- **Interactive Prediction** – Enter your own ad spend to predict sales  
+This project applies **Customer Segmentation** on an **online retail dataset** using RFM (Recency, Frequency, Monetary) analysis combined with clustering algorithms like **KMeans, Hierarchical Clustering, and DBSCAN**.  
+The goal is to group customers into meaningful clusters for targeted marketing and business decision-making.  
 
 ---
 
-## 🗂️ Project Structure
-├── data/
+## 📂 Project Structure
+📁 Customer-Segmentation
+│── 📓 customer_segmentation.ipynb # Jupyter Notebook (Colab code)
+│── 📄 data.csv # Raw dataset (Online Retail)
+│── 📘 README.md # Project documentation
 
-│ └── Advertising.csv # Dataset
+---
+## ⚙️ Steps Performed
+1. **Data Loading & Cleaning**  
+   - Handled missing values (`CustomerID`, `Description`)  
+   - Converted `InvoiceDate` to datetime format  
 
-├── src/
+2. **Feature Engineering (RFM Analysis)**  
+   - **Recency**: Days since last purchase  
+   - **Frequency**: Number of unique invoices per customer  
+   - **Monetary**: Total amount spent  
 
-│ ├── preprocess.py # Load, split, scale data
+3. **Outlier Handling**  
+   - Removed extreme values using **IQR & percentile capping**  
+   - Applied **log transformation** to reduce skewness  
 
-│ ├── baseline.py # Baseline model
+4. **Scaling & Dimensionality Reduction**  
+   - Used **StandardScaler** for normalization  
+   - Applied **PCA** for 2D visualization  
 
-│ ├── models.py # Train models (LR, Ridge, SVM)
+5. **Clustering Models**  
+   - **KMeans** (evaluated with Elbow method & cluster metrics)  
+   - **Hierarchical Clustering (Agglomerative)**  
+   - **DBSCAN** (density-based clustering)  
 
-│ ├── evaluation.py # Metrics + plots
+6. **Evaluation Metrics**  
+   - Silhouette Score  
+   - Calinski-Harabasz Index  
+   - Davies-Bouldin Index  
 
-│ ├── feature_importance.py # Permutation importance
-
-│ ├── predict.py # Predict sales for user inputs
-
-│ ├── scenario.py # Budget adjustment scenarios
-
-├── notebook/
-
-│ ├── Sales_Prediction.ipynb # Main notebook (analysis + demo)
-  
-└── README.md # Project documentation
+7. **Visualization**  
+   - PCA 2D plots of clusters  
+   - 3D scatter plot with centroids  
 
 ---
 
-## 📦 Dependencies
+## 📊 Example Results
 
-- pandas  
-- numpy  
-- scikit-learn  
-- matplotlib  
-- ipywidgets (for interactive input in Jupyter Notebook)  
+- **Elbow Method** to find optimal clusters  
+- **KMeans PCA Plot** with centroids  
+- **3D Cluster Visualization** of Recency, Frequency, Monetary  
 
 ---
 
-## ▶️ Usage
+## 🛠️ Requirements
+Install dependencies before running the notebook:
 
-### 1. Run Jupyter Notebook
 ```bash
-jupyter notebook Sales_Prediction.ipynb
+pip install pandas numpy matplotlib seaborn scikit-learn
 ```
-### 2. Predict Sales (Interactive)
-Inside the notebook, enter **TV, Radio, and Newspaper ad spends** → get predicted sales instantly.
 
-### 3. Scenario Analysis
-Test budget changes like:
-- 📺 **+10% TV**  
-- 📰 **-20% Newspaper**  
-- 📻 **+10% Radio**  
-- 📺 **+10% TV** & 📻 **+15% Radio**  
-- 💰 **-10% All spends**  
+## ▶️ How to Run
 
----
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/your-username/Customer-Segmentation.git
+   cd Customer-Segmentation
+   ```
 
-## 📈 Results
+2. Open `customer_segmentation_Using_Kmeans.ipynb` in **Google Colab** or **Jupyter Notebook**  
 
-- **Baseline model** → acts as benchmark  
-- **SVM model** → best performance (lowest RMSE, highest R²)  
-- **TV & Radio** → most important features  
-- **TV + Radio budgets** → biggest improvement in predicted sales  
+3. Download the dataset (see **Dataset Link** section below) and place it in the project folder  
+
+4. If running on **Colab**, upload `data.csv` manually  
+
+5. Run all cells to perform preprocessing, clustering, and visualization  
 
 ---
 
-## 📊 Business Insights & Recommendations
+## 📂 Dataset Link
+Since the dataset is too large to upload in the repository, you can download it directly from here:  
 
-Based on scenario testing with the trained model:
+👉 [Download Dataset](YOUR_DATASET_LINK_HERE)  
 
-- 📺 **TV advertising has the strongest impact on sales**  
-  +10% TV spend → **+0.53 higher average sales**  
-
-- 📻 **Radio advertising is highly effective**  
-  +10% Radio spend → **+0.44 higher sales**  
-
-- 🔗 **Combining TV and Radio yields the best results**  
-  +10% TV & +15% Radio → **+1.22 higher sales** (synergy effect)  
-
-- 📰 **Newspaper advertising has minimal effect**  
-  –20% Newspaper spend → only **–0.02 change in sales**  
-
-- 💰 **Budget cuts directly reduce sales**  
-  –10% across all channels → **–1.00 drop in sales**  
-
-### ✅ Recommendations for Businesses
-- Invest more in **TV and Radio advertising** (highest returns)  
-- Reduce **Newspaper ad spend**, reallocate to TV/Radio  
-- Use a **combined TV + Radio strategy** for maximum impact  
-- Avoid **across-the-board budget cuts**  
-- Follow a **data-driven marketing approach** with continuous monitoring  
+*(https://www.kaggle.com/datasets/carrie1/ecommerce-data)*  
 
 ---
 
-## 🙌 Author
+## 🚀 Future Improvements
+- Automate hyperparameter tuning for **DBSCAN** & **KMeans**  
+- Try **Gaussian Mixture Models (GMM)** for soft clustering  
+- Deploy clustering results into a dashboard (**Streamlit / Power BI**)  
+
+---
+
+## ✨ Author
+👩‍💻 Developed by **Noor Fatima**  
+📌 For learning and demonstration purposes (**Data Science / Customer Segmentation project**)  
+
 
 **Developed by Noor Fatima**  
 🎓 Final-year Computer Science Student | Data Science Projects  
