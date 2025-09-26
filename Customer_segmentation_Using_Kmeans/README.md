@@ -10,8 +10,6 @@ The goal is to group customers into meaningful clusters for targeted marketing a
 
 │── 📓 customer_segmentation.ipynb # Jupyter Notebook (Colab code)
 
-│── 📄 data.csv # Raw dataset (Online Retail)
-
 │── 📘 README.md # Project documentation
 
 
