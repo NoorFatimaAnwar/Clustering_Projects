@@ -7,9 +7,13 @@ The goal is to group customers into meaningful clusters for targeted marketing a
 
 ## 📂 Project Structure
 📁 Customer-Segmentation
+
 │── 📓 customer_segmentation.ipynb # Jupyter Notebook (Colab code)
+
 │── 📄 data.csv # Raw dataset (Online Retail)
+
 │── 📘 README.md # Project documentation
+
 
 ---
 ## ⚙️ Steps Performed
@@ -65,7 +69,7 @@ pip install pandas numpy matplotlib seaborn scikit-learn
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/Customer-Segmentation.git
+   git clone https://github.com/NoorFatimaAnwar/Clustering_Projects/blob/main/Customer_segmentation_Using_Kmeans.git
    cd Customer-Segmentation
    ```
 
@@ -99,6 +103,3 @@ Since the dataset is too large to upload in the repository, you can download it 
 👩‍💻 Developed by **Noor Fatima**  
 📌 For learning and demonstration purposes (**Data Science / Customer Segmentation project**)  
 
-
-**Developed by Noor Fatima**  
-🎓 Final-year Computer Science Student | Data Science Projects  
